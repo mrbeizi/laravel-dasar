@@ -17,7 +17,7 @@
                         <img width="125px" height="75px" src="{{asset('storage/'.$post->image)}}" alt="default" style="object-fit: cover;">
                         <div class="ml-3">
                             <p>{{$post->title}}</p>
-                            <p class="text-muted">{{$post->created_at}} &middot; {{$post->updated_at}}</p>
+                            <p class="text-muted">{{$post->created_at}} &middot; {{$post->created_at->diffForHumans()}}</p>
                         </div>
                     </div>
                     <div>
