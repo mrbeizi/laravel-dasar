@@ -10,7 +10,8 @@ class PublicController extends Controller
 {
     public function index()
     {
-        $posts = Post::latest()->get();
+        // to minimize the N+1 query with relation
+        $posts = Post::with('user')->latest()->get();
 
         return view('public.post.index', compact('posts'));
     }
