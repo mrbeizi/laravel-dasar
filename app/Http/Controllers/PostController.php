@@ -9,6 +9,11 @@ use Auth;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $user_id = Auth::user()->id;
@@ -43,7 +48,7 @@ class PostController extends Controller
             'description'   => $request->description,
         ]);
 
-        return redirect()->route('post');
+        return redirect()->route('post')->with('message','Post has been created successfully!');
     }
 
     public function edit(Post $post)
@@ -73,13 +78,13 @@ class PostController extends Controller
             'description'   => $request->description,
         ]);
 
-        return redirect()->route('post');
+        return redirect()->route('post')->with('message','Post has been updated successfully!');
     }
 
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->back();
+        return redirect()->back()->with('message','Post has been removed successfully!');
 
     }
 }
