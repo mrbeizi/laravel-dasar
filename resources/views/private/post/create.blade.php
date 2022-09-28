@@ -6,7 +6,7 @@
         <div class="card w-50">
             <div class="card-header">Create New Post</div>
             <div class="card-body">
-                <form action="{{route('post.store')}}" method="POST">
+                <form action="{{route('post.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="title">Title</label>
